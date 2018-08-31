@@ -11,7 +11,7 @@ git add -A (agrega último cambio)
 git commit -m “texto de guardado justificado”
 git commit --amend -m “cambio de nombre commit”
 git log  (ver commits creados)
-git checkout  (+ código del commit, +rama )
+git checkout  (+ código del commit, +rama )(Se posiciona en un commit o en una rama)
 git checkout  master (viajar ultimo commit)
 git branch (+nombre rama (crea rama) )
 git branch -D (nombre(elimina rama))
@@ -42,3 +42,5 @@ entrar a llave publica id_rsa.pub
 car id_rsa.pub da llave ssh key para GitHub
 se agrega a settings -> llave ssh
 git remote add origin “conexión ssh de git”
+
+
