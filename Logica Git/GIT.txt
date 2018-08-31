@@ -16,12 +16,16 @@ git checkout  master (viajar ultimo commit)
 git branch (+nombre rama (crea rama) )
 git branch -D (nombre(elimina rama))
 git checkout -b (nombre de rama (crea y mueve))
+
 git checkout merge (posicionada en la rama a la que se va a sumar)
+
 git clone (+ direccion (clona proyecto al pc))
 git remote add origin (+https://github.com/elnapol/TimeToWater-Master.git (vincula proyectos))
 git remote -v (muestra acciones)
 git remote remove origin (remueve conexión)
+
 git push origin master (subir a github (master se puede cambiar por ramas))
+
 git push origin master -f (fuerza cambios como el cambio de nombre de commit)
 git tag –a v1.0 –m “mensaje” (marca versiones en “commits”)
 git tag v1.0 (guarda versión sin commit)
