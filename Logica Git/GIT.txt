@@ -14,6 +14,7 @@ git log  (ver commits creados)
 git checkout  (+ código del commit, +rama )(Se posiciona en un commit o en una rama)
 git checkout  master (viajar ultimo commit)
 git branch (+nombre rama (crea rama) )
+git branch -a (muestra ramas ocultas)
 git branch -D (nombre(elimina rama))
 git checkout -b (nombre de rama (crea y mueve))
 
