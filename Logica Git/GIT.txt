@@ -17,7 +17,8 @@ git branch (+nombre rama (crea rama) )
 git branch -D (nombre(elimina rama))
 git checkout -b (nombre de rama (crea y mueve))
 
-git checkout merge (posicionada en la rama a la que se va a sumar)
+git checkout merge (posicionada en la rama a la que se va a sumar, mescla ramas)
+
 
 git clone (+ direccion (clona proyecto al pc))
 git remote add origin (+https://github.com/elnapol/TimeToWater-Master.git (vincula proyectos))
