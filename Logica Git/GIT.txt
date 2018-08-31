@@ -46,3 +46,7 @@ se agrega a settings -> llave ssh
 git remote add origin “conexión ssh de git”
 
 
+touch git .gitignore (crear archovos para ignora archivos)
+
+
+

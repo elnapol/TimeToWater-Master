@@ -1,0 +1,26 @@
+# Compled source #
+##################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.sh
+
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+#Logs and database #
+####################
+*.log
+*.sql
+*.sqlite
