@@ -48,5 +48,9 @@ git remote add origin “conexión ssh de git”
 
 touch git .gitignore (crear archovos para ignora archivos)
 
+git fetch (trae lo cambios remotos y se hace un merge)
+
+
+
 
 
