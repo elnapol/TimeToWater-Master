@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1083084249551",
+    "firebase_url": "https://timetowater-napo.firebaseio.com",
+    "project_id": "timetowater-napo",
+    "storage_bucket": "timetowater-napo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083084249551:android:14ac67f850624391",
+        "android_client_info": {
+          "package_name": "com.example.enzo.kotlin_timetowater"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1083084249551-p8eg6g99to9re8anfej9vrp4kvn1a41t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.enzo.kotlin_timetowater",
+            "certificate_hash": "f2718971e8661400135b10afd207d24c57e7be3f"
+          }
+        },
+        {
+          "client_id": "1083084249551-1r2efnjigjad533svrbicke3le1o3f7f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxwyCK2NA4slYMyuJ_gjHxSnshUnfixOM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1083084249551-1r2efnjigjad533svrbicke3le1o3f7f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

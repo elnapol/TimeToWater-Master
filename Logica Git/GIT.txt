@@ -46,3 +46,8 @@ se agrega a settings -> llave ssh
 git remote add origin “conexión ssh de git”
 
 
+touch git .gitignore (crear archovos para ignora archivos)
+git rm (+ nombre de arrchivo (BORRA ARCHIVO))
+git clone --single-branch -b Note git@github.com:elnapol/TimeToWater-Master.git
+
+
