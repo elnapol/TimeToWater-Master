@@ -1,57 +1,100 @@
 <?php
-include("conexion_vista.php");
-$con = new conexion();
 
-class compracion{ 
+        function banderaHumti($humti,$mojado, $seco){
 
-        $getDatos=$con->recuperarDatos();
-       
-        $temp = $getDatos[1];
-        $hum = $getDatos[2];
-        $humti = $getDatos[3];
-        $estado = $getDatos[4];
+        //verificar humedad         
+            if($humti<=$seco&&$humti>=$mojado){
+                        $bhum=0;
+                        $hum_text="Buen Estado de humedad";
+            } 
+            elseif($humti>$seco){
+                        $hum=2;
+                        $hum_text="Plante peligrosamente seca";
+            }
+            elseif($humti<$mojado){
+                        $hum=1;
+                        $hum_text="Planta peligrosamente humeda";
+            }
+            return array($hum, $hum_text);
+        }
 
-        $getDatos_Cotas=$con->recuperarDatosMiPlanta();
-        $calor = $getDatos_Cotas[1];
-        $frio = $getDatos_Cotas[2];
-        $mojado = $getDatos_Cotas[3];
-        $seco = $getDatos_Cotas[4];
+        function banderaTemp($temp, $frio, $calor){
+                  //verificar temperatura
 
-
-    function recuperarBandera(){
-
-        //verificar humedad
-
-        if($humti<=$seco&&$humti>=$mojad){
-                    $bandera_hum=0;
-                    $bandera_hum_text="Buen Estado de humedad";
-                } 
-        elseif($humti>$seco){
-                    $bandera_hum=2;
-                    $bandera_hum_text="Plante peligrosamente seca";
-                }
-        elseif($humti<$mojado){
-                    $bandera_hum=1;
-                    $bandera_hum_text="Planta peligrosamente humeda";
-                }
-
-
-              //verificar temperatura
-
-
-        if($temp<=$calor && $temp>=$frio){
-                    $bandera_temp=0;
-                    $bandera_temp_text="Buena Temperatura";
-                } 
-        elseif($temp>$calor){
-                    $bandera_temp=2;
-                    $bandera_temp_text="Planta acalorada";
-                }
-        elseif($temp<$frio){
-                    $bandera_temp=1;
-                    $bandera_temp_text="Planta con frio";
-                }
-    }
-}
-
+            if($temp<=$calor && $temp>=$frio){
+                        $tem=0;
+                        $tem_text="Buena Temperatura";
+            } 
+            elseif($temp>$calor){
+                        $tem=2;
+                        $tem_text="Planta acalorada";
+            }
+            elseif($temp<$frio){
+                        $tem=1;
+                        $tem_text="Planta con frio";
+            }
+            return array($tem, $tem_text);
+        }
 ?>
+        <?php
+        // Humedad de tierra se transforma en un frace
+        function humedadInformacion($humti){ 
+                 if($humti>=800){        ?> 
+                      <div class="alert alert-danger">
+                        <h1 class="text-center"><strong>Nada humedo </strong> </h1> 
+                        </div>
+
+              <?php }elseif($humti>=600){       ?> 
+                      <div class="alert alert-danger">
+                        <h1 class="text-center"><strong>Poco humedo</strong> </h1> 
+                        </div>
+        <?php       }elseif($humti>=300){       ?> 
+                      <div class="alert alert-danger">
+                        <h1 class="text-center"><strong>Humedo</strong> </h1> 
+                        </div>
+         <?php      }else{      ?> 
+                     <div class="alert alert-danger">
+                        <h1 class="text-center"><strong>Muy humedo</strong> </h1> 
+                        </div>
+                    <?php       }       
+        }
+        ?>
+
+
+
+
+ <?php 
+/*
+            if($humti<$seco&&$humti>$mojado&& $temp<$calor&&$temp>$frio){ 
+                $con->regarAutoMiPlanta("off");
+
+                ?>   <!--  Buen estado -->
+
+            <?php    
+
+            }elseif($humti>=$seco || $humti<=$mojado || $temp>=$calor || $temp<=$frio){ ?> 
+                
+                          <!-- DEMACIADO SECO -->  
+            <?php 
+                    if($bandera_hum == 1 || $bandera_hum == 2){
+                        echo $bandera_hum_text." ";
+
+                    }
+                   if($bandera_temp == 1 || $bandera_temp == 2){
+                        echo $bandera_temp_text;
+                    }   ?>
+
+
+
+         <?php   } 
+                if($humti<=$mojado+100){
+                    $con->regarAutoMiPlanta("off");
+                }
+                if($bandera_hum==2){
+                    $con->regarAutoMiPlanta("on");
+                }
+                if($humti>=$mojado+100 && $temp>=$calor){
+                    $con->regarAutoMiPlanta("on");
+                }
+         */
+         ?>
