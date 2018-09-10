@@ -1,20 +1,4 @@
 <?php   
-        include("conexion_vista.php");
-        $con = new conexion();
-
-        $getDatos=$con->recuperarDatos();
-       
-        $temp = $getDatos[1];
-        $hum = $getDatos[2];
-        $humti = $getDatos[3];
-        $estado = $getDatos[4];
-
-        $getDatos_Cotas=$con->recuperarDatosMiPlanta();
-        $calor = $getDatos_Cotas[1];
-        $frio = $getDatos_Cotas[2];
-        $mojado = $getDatos_Cotas[3];
-        $seco = $getDatos_Cotas[4];
-
         include("comparacion.php");
        // $comp = new comparacion();
 
@@ -67,56 +51,14 @@
             </div>
             <div class="col-sm-6">
                 <h2 class="text-center"><strong>Humedad Tierra</strong> <?php echo $seco." < ".$humti." > ".$mojado; ?> </h2>
-<?php
-                humedadInformacion($humti);
-
-?>
-
-               <!--  <div id="displayHumedadTi"></div> -->
+<?php           humedadInformacion($humti); ?>
             </div>
-            <div class="col-sm-6">
-                <p><h1 id="Estado"></h1></p>
-                <button id="cambiar" onclick="cambiarEstado()"> ¡Cambiar! </button>
-            </div>
+
             
-            <?php 
-            if($humti<$seco&&$humti>$mojado&& $temp<$calor&&$temp>$frio){ 
-                $con->regarAutoMiPlanta("off");
 
-                ?>   <!--  Buen estado -->
-                <div class="alert alert-success">
-                    <img src="../Feliz.png" class="rounded-circle" alt="Cinque Terre">
-                    <strong>Estoy Bien!</strong> <?php echo $bandera_hum_text." Y ".$bandera_temp_text ?>
-                </div>
-
-            <?php    
-
-            }elseif($humti>=$seco || $humti<=$mojado || $temp>=$calor || $temp<=$frio){ ?> 
-                
-                          <!-- DEMACIADO SECO -->  
-                <div class="alert alert-danger">
-                    <img src="../triste.png" class="rounded-circle" alt="Cinque Terre">
-                    <strong>Estoy Mal!</strong> <?php 
-                    if($bandera_hum == 1 || $bandera_hum == 2){
-                        echo $bandera_hum_text." ";
-
-                    }
-                   if($bandera_temp == 1 || $bandera_temp == 2){
-                        echo $bandera_temp_text;
-                    }   ?>
-                </div>
-
-
-         <?php   } 
-                if($humti<=$mojado+100){
-                    $con->regarAutoMiPlanta("off");
-                }
-                if($bandera_hum==2){
-                    $con->regarAutoMiPlanta("on");
-                }
-                if($humti>=$mojado+100 && $temp>=$calor){
-                    $con->regarAutoMiPlanta("on");
-                }
+         <?php   
+                pintaMensaje();
+                riegoAuto();
          ?>
              
 
