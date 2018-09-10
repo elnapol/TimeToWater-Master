@@ -1,20 +1,6 @@
 <?php   
-	    // echo  "hola ,undas";
-        include("conexion_vista.php");
-		$con = new conexion();
- 
-		$getDatos=$con->recuperarDatos();
-       
-        $temp = $getDatos[1];
-        $hum = $getDatos[2];
-        $humti = $getDatos[3];
-        $estado = $getDatos[4];
-
-        $getDatos_Cotas=$con->recuperarDatosMiPlanta();
-        $calor = $getDatos_Cotas[1];
-        $frio = $getDatos_Cotas[2];
-        $mojado = $getDatos_Cotas[3];
-        $seco = $getDatos_Cotas[4];
+        include("comparacion.php");
+       // $comp = new comparacion();
 
         
 ?>
@@ -48,36 +34,9 @@
         <div class="frame">
             <!-- logica humedad -->
             <?php
-            if($humti<=$seco&&$humti>=$mojad){
-                $bandera_hum=0;
-                $bandera_hum_text="Buen Estado de humedad";
-            } 
-            elseif($humti>$seco){
-                $bandera_hum=2;
-                $bandera_hum_text="Plante peligrosamente seca";
-            }
-            elseif($humti<$mojado){
-                $bandera_hum=1;
-                $bandera_hum_text="Planta peligrosamente humeda";
-            }
-                ?>
-
-            <!-- logica temperatura -->
-
-            <?php
-            if($temp<=$calor && $temp>=$frio){
-                $bandera_temp=0;
-                $bandera_temp_text="Buena Temperatura";
-            } 
-            elseif($temp>$calor){
-                $bandera_temp=2;
-                $bandera_temp_text="Planta acalorada";
-            }
-            elseif($temp<$frio){
-                $bandera_temp=1;
-                $bandera_temp_text="Planta con frio";
-            }
-                ?>
+            list($bandera_hum, $bandera_hum_text) = banderaHumti($humti,$mojado, $seco);
+            list($bandera_temp, $bandera_temp_text) =  banderaTemp($temp, $frio, $calor);
+            ?>
 
 
             <!-- Display Temperatura -->
@@ -92,70 +51,14 @@
             </div>
             <div class="col-sm-6">
                 <h2 class="text-center"><strong>Humedad Tierra</strong> <?php echo $seco." < ".$humti." > ".$mojado; ?> </h2>
-
-              <?php if($humti>=800){		?> 
-                      <div class="alert alert-danger">
-                        <h1 class="text-center"><strong>Nada humedo </strong> </h1> 
-                        </div>
-
-  	          <?php }elseif($humti>=600){		?> 
-                      <div class="alert alert-danger">
-                        <h1 class="text-center"><strong>Poco humedo</strong> </h1> 
-                        </div>
-        <?php 		}elseif($humti>=300){		?> 
-                      <div class="alert alert-danger">
-                        <h1 class="text-center"><strong>Humedo</strong> </h1> 
-                        </div>
-         <?php 		}else{		?> 
-                     <div class="alert alert-danger">
-                        <h1 class="text-center"><strong>Muy humedo</strong> </h1> 
-                        </div>
-                    <?php 		}		?>
-               <!--  <div id="displayHumedadTi"></div> -->
+<?php           humedadInformacion($humti); ?>
             </div>
-            <div class="col-sm-6">
-                <p><h1 id="Estado"></h1></p>
-                <button id="cambiar" onclick="cambiarEstado()"> ¡Cambiar! </button>
-            </div>
+
             
-            <?php 
-            if($humti<$seco&&$humti>$mojado&& $temp<$calor&&$temp>$frio){ 
-                $con->regarAutoMiPlanta("off");
 
-                ?>   <!--  Buen estado -->
-                <div class="alert alert-success">
-                    <img src="../Feliz.png" class="rounded-circle" alt="Cinque Terre">
-                    <strong>Estoy Bien!</strong> <?php echo $bandera_hum_text." Y ".$bandera_temp_text ?>
-                </div>
-
-            <?php    
-
-            }elseif($humti>=$seco || $humti<=$mojado || $temp>=$calor || $temp<=$frio){ ?> 
-                
-                          <!-- DEMACIADO SECO -->  
-                <div class="alert alert-danger">
-                    <img src="../triste.png" class="rounded-circle" alt="Cinque Terre">
-                    <strong>Estoy Mal!</strong> <?php 
-                    if($bandera_hum == 1 || $bandera_hum == 2){
-                        echo $bandera_hum_text." ";
-
-                    }
-                   if($bandera_temp == 1 || $bandera_temp == 2){
-                        echo $bandera_temp_text;
-                    }   ?>
-                </div>
-
-
-         <?php   } 
-                if($humti<=$mojado+100){
-                    $con->regarAutoMiPlanta("off");
-                }
-                if($bandera_hum==2){
-                    $con->regarAutoMiPlanta("on");
-                }
-                if($humti>=$mojado+100 && $temp>=$calor){
-                    $con->regarAutoMiPlanta("on");
-                }
+         <?php   
+                pintaMensaje();
+                riegoAuto();
          ?>
              
 
@@ -205,5 +108,6 @@
             slant:0
         });
     </script>
+
 </body>
 </html>
