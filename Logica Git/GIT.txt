@@ -17,8 +17,9 @@ git branch (+nombre rama (crea rama) )
 git branch -a (muestra ramas ocultas)
 git branch -D (nombre(elimina rama))
 git checkout -b (nombre de rama (crea y mueve))
+git push origin master (subir a github (master se puede cambiar por ramas))
 
-git checkout merge (posicionada en la rama a la que se va a sumar, mescla ramas)
+git merge (posicionada en la rama a la que se va a sumar, mescla ramas)
 
 
 git clone (+ direccion (clona proyecto al pc))
@@ -47,10 +48,7 @@ git remote add origin “conexión ssh de git”
 
 
 touch git .gitignore (crear archovos para ignora archivos)
-
-git fetch (trae lo cambios remotos y se hace un merge)
-
-
-
+git rm (+ nombre de arrchivo (BORRA ARCHIVO))
+git clone --single-branch -b Note git@github.com:elnapol/TimeToWater-Master.git
 
 

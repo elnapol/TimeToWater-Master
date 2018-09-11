@@ -1,14 +1,17 @@
 <?php
 
         include("conexion_vista.php");
+                //    require '../PHPMailer/PHPMailerAutoload';
+        include ("../PHPMailer/PHPMailerAutoload.php");
+        //require '/PHPMailer/PHPMailerAutoload';
         $con = new conexion();
-
         $getDatos=$con->recuperarDatos();
 
         $temp = $getDatos[1];
         $hum = $getDatos[2];
         $humti = $getDatos[3];
         $estado = $getDatos[4];
+        $estado_correo = $getDatos[5];
 
         $getDatos_Cotas=$con->recuperarDatosMiPlanta();
         $calor = $getDatos_Cotas[1];
@@ -113,21 +116,32 @@
                     <strong>Estoy Bien!</strong> <?php echo $bandera_hum_text." Y ".$bandera_temp_text ?>
                 </div>
             
-            <?php     
+            <?php    
+                enviar_correo($bandera_hum_text, $bandera_temp_text); 
 
-            }elseif($humti>=$seco || $humti<=$mojado || $temp>=$calor || $temp<=$frio){ ?> 
+            }elseif($humti>=$seco || $humti<=$mojado || $temp>=$calor || $temp<=$frio){ 
+                    
                 
+                ?> 
                           <!-- DEMACIADO SECO -->  
                 <div class="alert alert-danger">
                     <img src="../triste.png" class="rounded-circle" alt="Cinque Terre">
                     <strong>Estoy Mal!</strong> <?php 
+
+           //             correo();
+
                     if($bandera_hum == 1 || $bandera_hum == 2){
-                        echo $bandera_hum_text." ";
+                        echo $bandera_hum_text."<br>";
 
                     }
                    if($bandera_temp == 1 || $bandera_temp == 2){
                         echo $bandera_temp_text;
-                    }   ?>
+                    } 
+                    echo "<br>";
+                    enviar_correo($bandera_hum_text, $bandera_temp_text);
+
+
+                    ?>
                 </div>
          <?php 
           }  
@@ -157,4 +171,69 @@
                 $con->regarAutoMiPlanta("off");
             }
    
-        } ?>
+        } 
+
+        function correo($mensaje){
+
+            global $con, $estado_correo;
+            $mail = new PHPMailer();
+
+    
+
+            $mail->isSMTP();                                      // Set mailer to use SMTP
+            $mail->Host = 'timetowater2.napotex.cl';  // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+            $mail->Username = 'timetowater2@timetowater2.napotex.cl';                 // SMTP username
+            $mail->Password = 'Qweasdzxc123123';                           // SMTP password
+            $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+            $mail->Port = 465;                                    // TCP port to connect to
+
+            if($estado_correo=='off'){
+
+                 $mail->setFrom('timetowater2@timetowater2.napotex.cl', 'TimeToWater');
+                 $mail->addAddress('elnapol3@gmail.com', 'Enzo Prueba');     // Add a recipient
+                 //$mail->addAddress($corre, $nombre);               // Name is optional
+            
+                $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+                $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+                $mail->isHTML(true);                                  // Set email format to HTML
+
+                $mail->Subject = 'Asunto';
+                //$mail->Body    = 'Problemas!!';
+                $mail->Body    = $mensaje;
+                // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+                if(!$mail->send()) {
+                    echo "<br>";
+                    echo 'Message could not be sent.';
+                    echo 'Mailer Error: ' . $mail->ErrorInfo;
+
+                } else {
+                    echo "<br>";
+                    echo 'Message has been sent';
+                    $con->estadoCorreo('on');
+
+                }
+            }
+        }
+                function enviar_correo($bandera_hum_text, $bandera_temp_text){
+                    global $temp, $humti, $calor, $frio, $mojado, $seco, $estado_correo, $con;
+                    if($humti<$seco&&$humti>$mojado&& $temp<$calor&&$temp>$frio){
+                        
+                    $con->estadoCorreo('off');
+                    echo "<br>";
+                  //  echo $estado_correo.' No enviar correo';
+                }
+
+                if($humti>=$seco || $humti<=$mojado || $temp>=$calor || $temp<=$frio){ 
+
+                    $mensaje = $bandera_hum_text."<br>".$bandera_temp_text;
+                    echo "<br>";
+                    //echo $estado_correo.' enviar correo';
+                    correo($mensaje);             
+          } 
+
+        }
+
+
+        ?>
