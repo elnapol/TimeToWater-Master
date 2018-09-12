@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<title>Convalida</title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC5XdZaIkFwq-oXEV85RZR2GWwBM7J-Lmo",
+    authDomain: "time2water-2b8e6.firebaseapp.com",
+    databaseURL: "https://time2water-2b8e6.firebaseio.com",
+    projectId: "time2water-2b8e6",
+    storageBucket: "time2water-2b8e6.appspot.com",
+    messagingSenderId: "539092463560"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script src="../js/convalidaciones.js">
+
+</script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+
+			<div class="col-sm-7">
+				<!-- //tablas con las convalidaciones -->
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th colspan="2">Estudios a convalidar</th>
+							<th colspan="2">Estudios a aportados</th>
+							<th></th>
+							<th></th>
+						</tr>
+						<tr>
+							<th>Ciclo</th>
+							<th>modulo</th>
+							<th>Ciclo</th>
+							<th>modulo</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody id="tbody-tabla-convalidaciones">
+						
+					</tbody>
+				</table>
+			</div>
+	
+			<div class="col-sm-1">
+					<!-- //para crear espacio -->
+			</div>
+	
+			<div class="col-sm-4">
+					<!-- //Formularios apra añadir y modificar -->
+					<form id="form-convalidaciones">
+							<!-- <label for="modulo-a-covalidar">Modulo a Convalidar</label> -->
+						
+						<div class="form-group">
+							<label for="modulo-a-covalidar">Modulo a Convalidar</label>
+							<input type="text" class="form-control" name="moduloAConvalidar" value="" id="modulo-a-convalidar">
+						</div>
+						
+						<div class="form-group">
+							<label for="ciclo-a-covalidar">Ciclo a Convalidar</label>
+							<input type="text" class="form-control" name="cicloAConvalidar" value="" id="ciclo-a-convalidar">
+						</div>				
+
+						<div class="form-group">
+							<label for="modulo-aportado">Modulo Aportado</label>
+							<input type="text" class="form-control" name="moduloAportado" value="" id="modulo-aportado">
+						</div>
+
+						<div class="form-group">
+							<label for="ciclo-aportado">Ciclo Aportado</label>
+							<input type="text" class="form-control" name="cicloAportado" value="" id="ciclo-aportado">
+						</div>				
+						
+						<input type="submit" name="" value="Crear Convalidacion" id="boton-enviar-convalidacion" >
+					</form>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
