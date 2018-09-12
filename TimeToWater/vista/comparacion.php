@@ -132,10 +132,11 @@
 
                     if($bandera_hum == 1 || $bandera_hum == 2){
                         echo $bandera_hum_text."<br>";
-
+                        enviar_correo($bandera_temp_text);
                     }
                    if($bandera_temp == 1 || $bandera_temp == 2){
                         echo $bandera_temp_text;
+                        enviar_correo($bandera_temp_text);                    
                     } 
                     echo "<br>";
                     enviar_correo($bandera_hum_text, $bandera_temp_text);
