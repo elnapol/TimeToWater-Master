@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<title>Convalida</title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDLy9VyIdgrOi7hP7KMLgeozo5F31PVFZM",
+    authDomain: "timetowaterfirebase.firebaseapp.com",
+    databaseURL: "https://timetowaterfirebase.firebaseio.com",
+    projectId: "timetowaterfirebase",
+    storageBucket: "timetowaterfirebase.appspot.com",
+    messagingSenderId: "994386388647"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script src="../recepcion/conexion_firebase.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="5">
+
+<!-- </head>
+    <style>
+        body{
+            background-color: lightgray;
+        }
+
+        .frame{
+            margin: 15px 0;
+        }
+
+        h1 {
+            background-color: aquamarine;
+            font-weight:bold;
+        }
+    </style> -->
+<body class="container-fluid">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-sm-7">
+				<!-- //tablas con las convalidaciones -->
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th colspan="4">Informacion Planta</th>
+							<!-- <th colspan="2">Estudios a aportados</th> -->
+							<th></th>
+							<th></th>
+						</tr>
+						<tr>
+							<th>Humedad Tierra</th>
+							<th>Temperatura</th>
+							<th>Humedad Ambiente</th>
+							<th>Automatico</th>
+							<th>Correo</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody id="tbody-tabla-convalidaciones">
+						
+					</tbody>
+				</table>
+			</div>
+	
+			<div class="col-sm-1">
+					<!-- //para crear espacio -->
+			</div>
+	
+			<div class="col-sm-4">
+					<!-- //Formularios apra añadir y modificar -->
+					<form id="form-convalidaciones">
+							<!-- <label for="modulo-a-covalidar">Modulo a Convalidar</label> -->
+
+				
+						
+						<input type="submit" name="" value="Automaticon" id="boton-enviar-convalidacion" >
+					</form>
+			</div>
+		</div>
+	</div>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<script src="js/sevenSeg.js"></script>
+</body>
+</html>
